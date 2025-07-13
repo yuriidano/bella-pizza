@@ -11,10 +11,8 @@ import { cn } from "@/lib/utils"
 
 export const Header = () => {
 
-
     return (
-        <div className="min-h-35 border-b border-gray-200">
-
+        <div className="min-h-35 border-b border-gray-200 mb-10">
             <Container>
                 <div className="min-h-35 flex items-center justify-between">
                     <div className="flex items-center gap-x-2.5">
