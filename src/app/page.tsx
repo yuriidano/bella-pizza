@@ -1,5 +1,6 @@
 import { Container } from "@/components/shared/Container";
 import { Filters } from "@/components/shared/filters";
+import { ProductCart } from "@/components/shared/product-cart";
 import { TopBar } from "@/components/shared/top-bar/top-bar";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -15,11 +16,14 @@ export default function Home() {
         <TopBar />
 
         <Container>
-          <div className="flex ">
+          <div className="flex gap-x-10">
             <div className="basis-1/5">
               <Filters />
             </div>
-            <div className="basis-4/5"></div>
+            <div className="basis-4/5">
+                <ProductCart id={0} imageUpl={'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif'} name="Pepperoni" price={32}
+                            key={0} />
+            </div>
           </div>
         </Container>
     </div>

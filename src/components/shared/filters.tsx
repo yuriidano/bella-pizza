@@ -21,7 +21,7 @@ export const Filters = () => {
                 <RangeSlider min={0} max={10000} className="mb-15" />
                 <CheckboxFiltersGroup
                     title="Ingredients:"
-                    limit={6}
+                    limit={3}
                     defaultItems={[
                         {text: 'Cheese sauce', value: '1'},
                         {text: 'Garlic', value: '2'},
@@ -36,7 +36,14 @@ export const Filters = () => {
                         {text: 'Pickled cucumbers', value: '3'},
                         {text: 'Red onion', value: '4'},
                         {text: 'Tomatoes', value: '5'},
+                        {text: 'Mozzarella', value: '6'},
+                        {text: 'Cheese sauce', value: '1'},
+                        {text: 'Garlic', value: '2'},
+                        {text: 'Pickled cucumbers', value: '3'},
+                        {text: 'Red onion', value: '4'},
+                        {text: 'Tomatoes', value: '5'},
                         {text: 'Mozzarella', value: '6'}
+                        
                     ]}
                 />
             </div>
