@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Nunito } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/shared/Header";
+import { Providers } from "../redux/providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,10 +34,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${nunito.variable}  antialiased`}>
-        <main className="min-h-screen pb-7">
-          <Header />
-          {children}
-        </main>
+        <Providers>
+          <main className="min-h-screen pb-7">
+            <Header />
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );

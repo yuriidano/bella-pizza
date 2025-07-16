@@ -1,10 +1,10 @@
 import { Container } from "@/components/shared/Container";
 import { Filters } from "@/components/shared/filters";
 import { ProductCart } from "@/components/shared/product-cart";
+import { ProductGroupList } from "@/components/shared/product-group-list";
 import { TopBar } from "@/components/shared/top-bar/top-bar";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+
 
 export default function Home() {
   return (
@@ -16,13 +16,31 @@ export default function Home() {
         <TopBar />
 
         <Container>
-          <div className="flex gap-x-10">
+          <div className="flex gap-x-14">
             <div className="basis-1/5">
               <Filters />
             </div>
-            <div className="basis-4/5">
-                <ProductCart id={0} imageUpl={'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif'} name="Pepperoni" price={32}
-                            key={0} />
+            <div className="basis-4/5 flex flex-col gap-y-20">
+                <ProductGroupList title={'Pizzas'} items={[
+                  {id: 1, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 2, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 3, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 4, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 5, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 6, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 7, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 8, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                ]} />
+                <ProductGroupList title={'Morning'} items={[
+                  {id: 1, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 2, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 3, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 4, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 5, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 6, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 7, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                  {id: 8, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
+                ]} />
             </div>
           </div>
         </Container>

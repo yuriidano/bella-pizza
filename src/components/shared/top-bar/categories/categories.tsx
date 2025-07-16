@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 export const Categories = () => {
 
-    const items = ['All', 'Meat', 'Acute', 'Sweet', 'Vegetarian', 'With chicken']
+    const items = ['All', 'Pizzas', 'Morning', 'Sweet', 'Vegetarian', 'With chicken']
     const activeItem = 0;
 
     return (
@@ -11,11 +11,11 @@ export const Categories = () => {
             {
                 items.map((item, index) => {
                     return (
-                        <button key={index} 
+                        <a href={`#${item}`} key={index} 
                          className={cn("font-medium h-11 rounded-2xl px-6 cursor-pointer", 
                          index === activeItem && 'text-orange-400 bg-white shadow-md shadow-gray-200 ')}>
                             {item}
-                        </button>
+                        </a>
                     )
                 })
             }
