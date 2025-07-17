@@ -21,7 +21,7 @@ export default function Home() {
               <Filters />
             </div>
             <div className="basis-4/5 flex flex-col gap-y-20">
-                <ProductGroupList title={'Pizzas'} items={[
+                <ProductGroupList categoryId={1} title={'Pizzas'} items={[
                   {id: 1, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
                   {id: 2, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
                   {id: 3, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
@@ -31,7 +31,7 @@ export default function Home() {
                   {id: 7, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
                   {id: 8, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
                 ]} />
-                <ProductGroupList title={'Morning'} items={[
+                <ProductGroupList categoryId={2} title={'Morning'} items={[
                   {id: 1, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
                   {id: 2, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},
                   {id: 3, imageUpl: 'https://media.dodostatic.com/image/r:584x584/01975edea9f978778ab35724bf86718f.avif', name: 'Pepperoni', price: 32, items: [{price: 40}]},

@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
-// ...
+import homeReducer from './home/homeSlice'
 
 export const store = configureStore({
   reducer: {
-
+    homeReducer
   },
 })
 

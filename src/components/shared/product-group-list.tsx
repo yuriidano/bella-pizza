@@ -2,6 +2,8 @@
 import React, { useEffect, useRef } from "react";
 import { ProductCart } from "./product-cart"
 import { useIntersection } from 'react-use';
+import { useAppDispatch } from "@/redux/store";
+import { setActiveCategory } from "@/redux/home/homeSlice";
 
 interface Props {
     items: any[],
@@ -13,14 +15,17 @@ interface Props {
 
 
 export const ProductGroupList = ({ categoryId, items, className, listClassName, title }: Props) => {
+    const dispatch = useAppDispatch();
     const intersectionRef = React.useRef<HTMLDivElement | null>(null);
     const intersection = useIntersection(intersectionRef as React.RefObject<HTMLElement>, {
-        threshold: 0.3
+        threshold: 0.4
     });
 
     useEffect(() => {
         if(intersection?.isIntersecting) {
-            console.log(title)
+            if(categoryId) {
+                dispatch(setActiveCategory(categoryId))
+            }
         }
 
     }, [intersection?.isIntersecting, title])
