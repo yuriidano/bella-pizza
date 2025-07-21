@@ -25,12 +25,50 @@ model User {
     apdatedAt DateTime @updatedAt // час коли користувач був оновлений
 }
 
+model Category {
+    id Int @id @default(autoincrement())
+    name String
+    products Product[]
+
+    createdAt DateTime @default(now())  
+    apdatedAt DateTime @updatedAt 
+}
+
 model Product {
     id Int @id @default(autoincrement())
 
     name String
     imageUrl String
+    category Category @relation(fields: [categoryId], references: [id])
+    categoryId Int
+    ingridient Ingridient[]
+    items ProductItem[]
 
     createdAt DateTime @default(now())  
     apdatedAt DateTime @updatedAt 
+}
+
+
+model Ingridient {
+    id Int @id @default(autoincrement())
+
+    name String
+    price Int
+    imageUrl String
+    product Product[]
+
+    createdAt DateTime @default(now())  
+    apdatedAt DateTime @updatedAt 
+}
+
+model ProductItem {
+    id Int @id @default(autoincrement())
+
+    price Int
+    size Int?
+    pizzaType Int?
+
+    product Product @relation(fields: [productId], references: [id])
+
+    productId Int
 }
