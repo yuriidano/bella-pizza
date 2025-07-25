@@ -20,14 +20,16 @@ model User {
     fullName String
     email String
     password String
+
+    role UserRole @default(USER)
+    verified DateTime
+
+    provider String?
+    providerId String?
+
     orders Order[]
     cart Cart?
     verificationCode VerificationCode?
-
-    role UserRole @default(USER)
-
-    provider String
-    providerId String
 
     createdAt DateTime @default(now())  // час коли ми створили користувача
     apdatedAt DateTime @updatedAt // час коли користувач був оновлений
