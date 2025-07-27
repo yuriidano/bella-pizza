@@ -154,6 +154,8 @@ model VerificationCode {
     @@unique([userId, code])
 }
 
+
+
 enum OrderStatus {
     PENDING
     SUCCEEDED

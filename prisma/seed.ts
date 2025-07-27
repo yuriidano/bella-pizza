@@ -5,6 +5,7 @@ import { categories, ingredients, products } from "./constants";
 
 
 
+
 async function up() {
     await prisma.user.createMany({
         data: [
@@ -110,6 +111,32 @@ async function up() {
         ]   
     })
 
+    await prisma.cart.createMany({
+        data: [{
+            token: '112',
+            totalAmount: 0,
+            userId: 1
+            },
+            {
+            token: '112',
+            totalAmount: 0,
+            userId: 2
+            }]
+    });
+
+    await prisma.cartItem.create({
+        data: {
+                quantity: 2,
+                cartItemId: 1,
+                productItemId: 1,
+                ingridients: {
+                    connect: [{id: 1}, {id: 2}, {id: 3}]
+                }
+            },
+        
+    })
+
+
 }
 
 async function doun() {
@@ -119,6 +146,8 @@ async function doun() {
     await prisma.$executeRaw`TRUNCATE TABLE "Ingridient" RESTART IDENTITY CASCADE`; 
     await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`; 
     await prisma.$executeRaw`TRUNCATE TABLE "ProductItem" RESTART IDENTITY CASCADE`; 
+    await prisma.$executeRaw`TRUNCATE TABLE "Cart" RESTART IDENTITY CASCADE`; 
+    await prisma.$executeRaw`TRUNCATE TABLE "CartItem" RESTART IDENTITY CASCADE`; 
 }
 
 async function main() {
