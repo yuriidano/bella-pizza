@@ -154,6 +154,84 @@ model VerificationCode {
     @@unique([userId, code])
 }
 
+model Room {
+    id Int @id @default(autoincrement())
+
+    name String
+
+    window Window?
+
+    createdAt DateTime @default(now())  
+    apdatedAt DateTime @updatedAt     
+}
+
+
+model Window {
+    id Int @id @default(autoincrement())
+
+    name String
+
+    room Room @relation(fields: [roomId], references: [id])
+    roomId Int @unique
+
+    createdAt DateTime @default(now())  
+    apdatedAt DateTime @updatedAt   
+}
+
+
+model Page {
+    id Int @id @default(autoincrement())
+
+    name String
+
+    messages Message[]
+
+    createdAt DateTime @default(now())  
+    apdatedAt DateTime @updatedAt   
+}
+
+model Message {
+    id Int @id @default(autoincrement())
+
+    name String
+
+    page Page @relation(fields: [pageId], references: [id])
+    pageId Int
+
+    createdAt DateTime @default(now())  
+    apdatedAt DateTime @updatedAt   
+}
+
+model Menu {
+    id Int @id @default(autoincrement())
+
+    name String
+
+    items Item[]
+
+    createdAt DateTime @default(now())  
+    apdatedAt DateTime @updatedAt   
+}
+
+model Item {
+    id Int @id @default(autoincrement())
+
+    name String
+
+    menu Menu[]
+
+    createdAt DateTime @default(now())  
+    apdatedAt DateTime @updatedAt   
+}
+
+
+
+
+
+
+
+
+
 
 
 enum OrderStatus {

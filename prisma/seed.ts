@@ -135,7 +135,35 @@ async function up() {
             },
         
     })
+    
+    await prisma.room.create({
+        data: {
+            name: 'bathroom'
+        }
+    })
 
+    await prisma.window.create({
+        data: {name: '1', roomId: 1}
+    })
+
+    await prisma.page.create({
+        data: {name: 'main'}
+    })
+
+    await prisma.message.createMany({
+        data: [{name: 'Yura', pageId: 1}, {name: 'Ola', pageId: 1}, {name: 'Ira', pageId: 1}]
+    })
+
+    await prisma.item.createMany({
+        data: [{name: '1'}, {name: '2'}, {name: '3'}, {name: '4'}, {name: '5'},]
+    })
+
+    await prisma.menu.create({
+        data: {name: 'hearer', items: {connect: [{id: 1}, {id: 2}, {id: 5}]}}
+    })
+        await prisma.menu.create({
+        data: {name: 'footer', items: {connect: [{id: 3}, {id: 4}, {id: 5}]}}
+    })
 
 }
 
@@ -148,6 +176,8 @@ async function doun() {
     await prisma.$executeRaw`TRUNCATE TABLE "ProductItem" RESTART IDENTITY CASCADE`; 
     await prisma.$executeRaw`TRUNCATE TABLE "Cart" RESTART IDENTITY CASCADE`; 
     await prisma.$executeRaw`TRUNCATE TABLE "CartItem" RESTART IDENTITY CASCADE`; 
+    await prisma.$executeRaw`TRUNCATE TABLE "Room" RESTART IDENTITY CASCADE`; 
+    await prisma.$executeRaw`TRUNCATE TABLE "Window" RESTART IDENTITY CASCADE`; 
 }
 
 async function main() {

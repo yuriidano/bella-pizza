@@ -5,6 +5,7 @@ import { Container } from "./Container"
 import { Button } from "../ui/button"
 import { ArrowRight, ShoppingCart, User } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { SearchInput } from "./search-input"
 
 
 
@@ -14,7 +15,7 @@ export const Header = () => {
     return (
         <div className="min-h-35 border-b border-gray-200 mb-10">
             <Container>
-                <div className="min-h-35 flex items-center justify-between">
+                <div className="min-h-35 flex items-center gap-x-10">
                     <div className="flex items-center gap-x-2.5">
                         <div className="w-9 h-9">
                             <Image className="max-w-full" src={logo} alt="logo" />
@@ -26,9 +27,7 @@ export const Header = () => {
                             <div className="text-gray-400">it couldn't be tastier</div>
                         </div>
                     </div>
-
-
-                    <div></div>
+                    <div className="basis-1 grow-1"><SearchInput /></div>
                     <div className=" flex items-center gap-x-2">
                         <Button variant="outline"
                             className="cursor-pointer rounded-2xl flex items-center gap-2 border border-orange-500 text-orange-500
