@@ -4,13 +4,12 @@ import { ChangeEvent, MouseEvent, useState } from "react";
 import { Input } from "../ui/input";
 import { FilterChecboxProps, FilterCheckbox } from "./filter-checkbox";
 import { Button } from "../ui/button";
+import { useFilterIngridients } from "@/hooks/useFilterIngridients";
 
-type Item = FilterChecboxProps;
+type Item = {text: string, value: number};
 
 interface Props {
     title: string;
-    items: Item[];
-    defaultItems: Item[];
     limit?: number;
     searchInputPlaceholder?: string;
     onChange?: (values: string[]) => void;
@@ -20,11 +19,9 @@ interface Props {
 
 
 export const CheckboxFiltersGroup = ({
-    items,
     onChange,
     title,
     className,
-    defaultItems,
     defaultValue,
     limit = 6,
     searchInputPlaceholder = 'Search'
@@ -42,7 +39,12 @@ export const CheckboxFiltersGroup = ({
         setShowLess(prev => !prev);
     };
 
-    const itemsShow = showLess ? items : defaultItems?.slice(0, limit);
+    const {isLoading, items: itemIngridients} = useFilterIngridients();
+
+    const ingridients = itemIngridients.map(item => ({text: item.name, value: item.id}))
+
+    const itemsShow = showLess ? ingridients : ingridients?.slice(0, limit);
+
 
 
     return (
@@ -67,8 +69,7 @@ export const CheckboxFiltersGroup = ({
                                 <FilterCheckbox 
                                     key={index}
                                     text={item.text}
-                                    value={item.value}
-                                    endAdornment={item.endAdornment}
+                                    value={String(item.value)}
                                     checked={false}
                                     onCheckedChange={(ids) => console.log(ids)}
                                 />

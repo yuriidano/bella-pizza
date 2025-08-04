@@ -22,29 +22,6 @@ export const Filters = () => {
                 <CheckboxFiltersGroup
                     title="Ingredients:"
                     limit={3}
-                    defaultItems={[
-                        {text: 'Cheese sauce', value: '1'},
-                        {text: 'Garlic', value: '2'},
-                        {text: 'Pickled cucumbers', value: '3'},
-                        {text: 'Red onion', value: '4'},
-                        {text: 'Tomatoes', value: '5'},
-                        {text: 'Mozzarella', value: '6'}
-                    ]}
-                    items={[
-                        {text: 'Cheese sauce', value: '1'},
-                        {text: 'Garlic', value: '2'},
-                        {text: 'Pickled cucumbers', value: '3'},
-                        {text: 'Red onion', value: '4'},
-                        {text: 'Tomatoes', value: '5'},
-                        {text: 'Mozzarella', value: '6'},
-                        {text: 'Cheese sauce', value: '1'},
-                        {text: 'Garlic', value: '2'},
-                        {text: 'Pickled cucumbers', value: '3'},
-                        {text: 'Red onion', value: '4'},
-                        {text: 'Tomatoes', value: '5'},
-                        {text: 'Mozzarella', value: '6'}
-                        
-                    ]}
                 />
             </div>
         </div>
