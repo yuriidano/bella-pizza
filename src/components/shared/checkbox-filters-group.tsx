@@ -1,35 +1,32 @@
 'use client'
 
-import { ChangeEvent, MouseEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Input } from "../ui/input";
-import { FilterChecboxProps, FilterCheckbox } from "./filter-checkbox";
-import { Button } from "../ui/button";
+import { FilterCheckbox } from "./filter-checkbox";
 import { useFilterIngridients } from "@/hooks/useFilterIngridients";
+import { Skeleton } from "../ui/skeleton";
+import { IngridientFilterType } from "@/@types";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { toggleSelectIngridients } from "@/redux/home/homeSlice";
 
-type Item = {text: string, value: number};
+
 
 interface Props {
     title: string;
     limit?: number;
     searchInputPlaceholder?: string;
-    onChange?: (values: string[]) => void;
     defaultValue?: string[];
     className?: string;
+    nameItems: string
 }
 
 
-export const CheckboxFiltersGroup = ({
-    onChange,
-    title,
-    className,
-    defaultValue,
-    limit = 6,
-    searchInputPlaceholder = 'Search'
-    }: Props
-    ) => {
-
+export const CheckboxFiltersGroup = ({ title, limit = 6, searchInputPlaceholder = 'Search', nameItems}: Props) => {
+    const dispatch = useAppDispatch();
+    const selectedIngridients = useAppSelector(state => state.homeReducer.selectedIndgiriints)
     const [searchItems, setSearchItems] = useState<string>('');
     const [showLess, setShowLess] = useState(false);
+    
 
     const searchItemsHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setSearchItems(e.target.value)
@@ -39,13 +36,34 @@ export const CheckboxFiltersGroup = ({
         setShowLess(prev => !prev);
     };
 
+    const onSelectIngridientHandler = (id: number) => {
+        dispatch(toggleSelectIngridients(id))
+    }
+
     const {isLoading, items: itemIngridients} = useFilterIngridients();
 
-    const ingridients = itemIngridients.map(item => ({text: item.name, value: item.id}))
+    const ingridients = itemIngridients.map((item):IngridientFilterType => ({text: item.name, value: item.id}))
 
     const itemsShow = showLess ? ingridients : ingridients?.slice(0, limit);
 
 
+    if(isLoading) {
+        return (
+            <div>
+                 <h4 className="font-bold mb-3">{title}</h4>
+                 <div className="flex flex-col gap-y-3 mb-7">
+                    {
+                        ...Array(limit).fill(0).map((item, index) => {
+                            return (
+                                <Skeleton  className="h-6 w-[250px] rounded-[6px]"/>
+                            )
+                        })
+                    }
+                 </div>
+                 <Skeleton  className="h-6 w-[50px] rounded-[8px]"/>
+            </div>
+        )
+    }
 
     return (
         <div>
@@ -70,8 +88,9 @@ export const CheckboxFiltersGroup = ({
                                     key={index}
                                     text={item.text}
                                     value={String(item.value)}
-                                    checked={false}
-                                    onCheckedChange={(ids) => console.log(ids)}
+                                    checked={selectedIngridients.some(id => id == item.value)}
+                                    onCheckedChange={() => onSelectIngridientHandler(item.value)}
+                                    name={nameItems}
                                 />
                             )
                         })

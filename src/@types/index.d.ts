@@ -1,0 +1,1 @@
+export type IngridientFilterType = {text: string, value: number};

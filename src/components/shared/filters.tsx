@@ -11,6 +11,7 @@ export const Filters = () => {
             <div className="mb-11.5 flex flex-col gap-y-3.5">
                 <FilterCheckbox text="Can be collected" value='1'  />
                 <FilterCheckbox text="New items" value='2'  />
+                          <FilterCheckbox text="New 1items" value='3'  />
             </div>
             <div>
                 <h3 className="font-bold mb-3.5">Price from and to:</h3>
@@ -22,6 +23,7 @@ export const Filters = () => {
                 <CheckboxFiltersGroup
                     title="Ingredients:"
                     limit={3}
+                    nameItems={'Ingredients'}
                 />
             </div>
         </div>
